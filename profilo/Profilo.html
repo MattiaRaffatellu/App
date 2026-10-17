@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillPath - Profilo & Statistiche</title>
+
+  <!-- Google Fonts: Inter per la tipografia e Material Symbols Rounded per le icone -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Collegamento al file CSS separato della pagina Profilo -->
+  <link rel="stylesheet" href="style-profilo.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       CONTENITORE PRINCIPALE (MOBILE-FIRST)
+       ========================================================================== -->
+  <div class="app-container">
+
+    <!-- ========================================================================
+         1. HEADER: Intestazione con navigazione Indietro e tasto Impostazioni
+         ======================================================================== -->
+    <header class="app-header">
+      <div class="header-left">
+        <!-- Tasto Indietro: torna alla schermata principale Principale.html -->
+        <a href="../Principale.html" class="btn-round-nav" aria-label="Torna alla Dashboard">
+          <span class="material-symbols-rounded">arrow_back</span>
+        </a>
+        <h1 class="header-title">Profilo</h1>
+      </div>
+
+      <div class="header-actions">
+        <!-- ====================================================================
+             COLLEGAMENTO CHIESTO DALL'UTENTE:
+             Il tasto impostazioni del folder profilo si collega al folder impostazioni
+             ==================================================================== -->
+        <a href="../impostazioni/Impostazioni.html" class="btn-round-nav" aria-label="Vai a Impostazioni" id="btn-to-settings">
+          <span class="material-symbols-rounded">settings</span>
+        </a>
+
+        <!-- Mini avatar icona utente -->
+        <div class="user-mini-badge" title="Mattia Raffatellu">
+          <span class="material-symbols-rounded">person</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================================================
+         2. CONTENUTO PRINCIPALE DEL PROFILO
+         ======================================================================== -->
+    <main class="app-main">
+
+      <!-- HERO SECTION: Foto Profilo, Identità e Badge Streak -->
+      <section class="card profile-hero-card" aria-label="Informazioni utente">
+        <div class="profile-hero-glow"></div>
+
+        <!-- Avatar con anello gradiente e indicatore di stato online -->
+        <div class="avatar-wrapper">
+          <div class="avatar-ring">
+            <img class="avatar-img" 
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwtsUxyMZmSkw3qsItxNxUM0MELkvT--NgSHA5kKvG6YFsUN5Yd-LTAzPcsqalif-ggiTMYHslbjjfTVKXEfIa2K4UvqxyxNcbPzLrH65X_5vC70oIqhN52AbBAyMpjdc6pK5hrdWyBdzezt0jJf1PXZQXn0vXNoARi5rcLwiFIbLQLoDzJM76NzjN_LWA-ZZMiJYDk7BUXD1ZVUwB9i_A4qBRm8meeeFzk1Rwp54Xe-WCEdKGDMUm" 
+                 alt="Foto profilo Mattia Raffatellu">
+          </div>
+          <span class="status-online-dot" title="In linea ora"></span>
+        </div>
+
+        <!-- Livello e Nome -->
+        <div class="badge-level">
+          <span class="level-dot"></span>
+          <span>Livello 4 • Studente Costante</span>
+        </div>
+
+        <h2 class="profile-name">Mattia Raffatellu</h2>
+        <p class="profile-role-text">Frontend &amp; JavaScript Learner • Membro da Gennaio 2024</p>
+
+        <!-- Pillole Streak e Obiettivi raggiunti -->
+        <div class="tags-row">
+          <div class="pill-streak">
+            <span class="material-symbols-rounded icon-filled icon-streak">local_fire_department</span>
+            <span>14 Giorni di Streak</span>
+          </div>
+
+          <div class="pill-goals">
+            <span class="material-symbols-rounded icon-filled icon-bolt">bolt</span>
+            <span>84% Obiettivi</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEZIONE STATISTICHE CHIAVE: Griglia KPI 2x2 -->
+      <section class="kpi-grid" aria-label="Statistiche di studio">
+        
+        <!-- KPI 1: Ore Totali -->
+        <div class="card kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-label">Ore totali</span>
+            <div class="kpi-icon-box">
+              <span class="material-symbols-rounded">schedule</span>
+            </div>
+          </div>
+          <p class="kpi-value">142.5<span class="kpi-value-unit">h</span></p>
+          <div class="kpi-bottom-tag">
+            <span class="material-symbols-rounded" style="font-size: 14px;">trending_up</span>
+            <span>+12.4h questo mese</span>
+          </div>
+        </div>
+
+        <!-- KPI 2: Lezioni Fatte -->
+        <div class="card kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-label">Lezioni fatte</span>
+            <div class="kpi-icon-box">
+              <span class="material-symbols-rounded">menu_book</span>
+            </div>
+          </div>
+          <p class="kpi-value">38<span class="kpi-value-unit" style="font-size: 0.85rem; font-weight: 400;"> / 45</span></p>
+          <div class="kpi-progress-bar-wrapper">
+            <div class="kpi-progress-track">
+              <div class="kpi-progress-fill" style="width: 84%;"></div>
+            </div>
+            <p class="kpi-progress-desc">7 rimanenti al ciclo</p>
+          </div>
+        </div>
+
+        <!-- KPI 3: Streak Attuale -->
+        <div class="card kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-label">Streak attuale</span>
+            <div class="kpi-icon-box kpi-tertiary">
+              <span class="material-symbols-rounded icon-filled">local_fire_department</span>
+            </div>
+          </div>
+          <p class="kpi-value">14 <span class="kpi-value-unit" style="font-size: 0.85rem; font-weight: 400;">gg</span></p>
+          <div class="kpi-record-text">
+            <span class="material-symbols-rounded" style="font-size: 14px;">military_tech</span>
+            <span>Record: 21 giorni</span>
+          </div>
+        </div>
+
+        <!-- KPI 4: Competenze / Badge -->
+        <div class="card kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-label">Competenze</span>
+            <div class="kpi-icon-box kpi-secondary">
+              <span class="material-symbols-rounded">verified</span>
+            </div>
+          </div>
+          <p class="kpi-value">7 <span class="kpi-value-unit" style="font-size: 0.85rem; font-weight: 400;">badge</span></p>
+          <div class="kpi-record-text" style="color: var(--color-secondary); font-weight: 500;">
+            <span class="material-symbols-rounded" style="font-size: 14px;">code</span>
+            <span>HTML, CSS, JS, Git...</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- GRAFICO STORICO ORE DI STUDIO (INTERATTIVO) -->
+      <section class="card" aria-label="Grafico andamento studio">
+        <div class="chart-header">
+          <div>
+            <h3 class="chart-title">Ore di studio &amp; Traguardi</h3>
+            <p class="chart-subtitle">Andamento mensile (Gen - Lug)</p>
+          </div>
+          <div class="year-chip">2024</div>
+        </div>
+
+        <!-- Legenda Grafico -->
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-dot-primary"></span>
+            <span>Ore mensili</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-line-media"></span>
+            <span>Media (18h)</span>
+          </div>
+        </div>
+
+        <!-- Corpo del Grafico con Barre Interattive -->
+        <div class="chart-body-area">
+          <div class="chart-media-line"></div>
+          <span class="chart-media-label">18h media</span>
+
+          <div class="bars-container" id="chart-bars">
+            <!-- Gen: 16h -->
+            <div class="bar-col" data-month="gen" title="Gennaio: 16h">
+              <div class="bar-shape" style="height: 40%;">
+                <span class="bar-tooltip">16h</span>
+              </div>
+              <span class="bar-month-name">Gen</span>
+            </div>
+
+            <!-- Feb: 19h -->
+            <div class="bar-col" data-month="feb" title="Febbraio: 19h">
+              <div class="bar-shape" style="height: 48%;">
+                <span class="bar-tooltip">19h</span>
+              </div>
+              <span class="bar-month-name">Feb</span>
+            </div>
+
+            <!-- Mar: 22h -->
+            <div class="bar-col" data-month="mar" title="Marzo: 22h">
+              <div class="bar-shape" style="height: 55%;">
+                <span class="bar-tooltip">22h</span>
+              </div>
+              <span class="bar-month-name">Mar</span>
+            </div>
+
+            <!-- Apr: 17h -->
+            <div class="bar-col" data-month="apr" title="Aprile: 17h">
+              <div class="bar-shape" style="height: 42%;">
+                <span class="bar-tooltip">17h</span>
+              </div>
+              <span class="bar-month-name">Apr</span>
+            </div>
+
+            <!-- Mag: 24h -->
+            <div class="bar-col" data-month="mag" title="Maggio: 24h">
+              <div class="bar-shape" style="height: 60%;">
+                <span class="bar-tooltip">24h</span>
+              </div>
+              <span class="bar-month-name">Mag</span>
+            </div>
+
+            <!-- Giu: 36h (Mese Record) -->
+            <div class="bar-col is-active" data-month="giu" title="Giugno: 36h (Record)">
+              <div class="bar-shape bar-peak" style="height: 90%;">
+                <div class="peak-badge">
+                  <span>36h</span>
+                  <span class="material-symbols-rounded icon-star">star</span>
+                </div>
+              </div>
+              <span class="bar-month-name" style="font-weight: 700; color: var(--color-primary);">Giu</span>
+            </div>
+
+            <!-- Lug: 28h (In Corso) -->
+            <div class="bar-col" data-month="lug" title="Luglio: 28h">
+              <div class="bar-shape bar-current" style="height: 70%;">
+                <span class="bar-tooltip">28h</span>
+              </div>
+              <span class="bar-month-name" style="font-weight: 600; color: var(--color-secondary);">Lug</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillola dinamica con nota/traguardo aggiornata da script.js -->
+        <div class="chart-note-pill" id="chart-milestone-pill">
+          <div class="note-trophy-circle">
+            <span class="material-symbols-rounded" style="font-size: 18px;">emoji_events</span>
+          </div>
+          <p class="note-text-content" id="chart-note-text">
+            <strong>Record personale a Giugno:</strong> 36 ore completate con il modulo JavaScript avanzato.
+          </p>
+        </div>
+      </section>
+
+      <!-- TRAGUARDI SBLOCCATI (BADGES) -->
+      <section aria-labelledby="badges-heading">
+        <div class="badges-section-header">
+          <div>
+            <h3 class="badges-section-title" id="badges-heading">Traguardi sbloccati</h3>
+            <p class="badges-section-subtitle">Ultimi riconoscimenti ottenuti</p>
+          </div>
+          <!-- Tasto per visualizzare tutti i badge con interazione JavaScript -->
+          <button type="button" class="btn-view-all-badges" id="btn-view-all-badges">
+            <span>Vedi tutti (7)</span>
+            <span class="material-symbols-rounded" style="font-size: 16px;">chevron_right</span>
+          </button>
+        </div>
+
+        <div class="badges-list">
+          
+          <!-- Badge 1: Pioniere JavaScript -->
+          <div class="card badge-item-card">
+            <div class="badge-item-left">
+              <div class="badge-item-icon-box bg-purple">
+                <span class="material-symbols-rounded icon-filled">code</span>
+              </div>
+              <div class="badge-item-info">
+                <h4 class="badge-item-title">Pioniere JavaScript</h4>
+                <p class="badge-item-desc">Completato il modulo base con successo</p>
+              </div>
+            </div>
+            <div class="badge-status-pill">
+              <span class="material-symbols-rounded icon-check">check_circle</span>
+              <span>Sbloccato</span>
+            </div>
+          </div>
+
+          <!-- Badge 2: Disciplina di ferro -->
+          <div class="card badge-item-card">
+            <div class="badge-item-left">
+              <div class="badge-item-icon-box bg-orange">
+                <span class="material-symbols-rounded icon-filled">local_fire_department</span>
+              </div>
+              <div class="badge-item-info">
+                <h4 class="badge-item-title">Disciplina di ferro</h4>
+                <p class="badge-item-desc">10 giorni consecutivi di studio continuo</p>
+              </div>
+            </div>
+            <div class="badge-status-pill">
+              <span class="material-symbols-rounded icon-check">check_circle</span>
+              <span>Sbloccato</span>
+            </div>
+          </div>
+
+          <!-- Badge 3: Notte da dev -->
+          <div class="card badge-item-card">
+            <div class="badge-item-left">
+              <div class="badge-item-icon-box bg-teal">
+                <span class="material-symbols-rounded icon-filled">nightlight</span>
+              </div>
+              <div class="badge-item-info">
+                <h4 class="badge-item-title">Notte da dev</h4>
+                <p class="badge-item-desc">5 sessioni serali completate con focus totale</p>
+              </div>
+            </div>
+            <div class="badge-status-pill">
+              <span class="material-symbols-rounded icon-check">check_circle</span>
+              <span>Sbloccato</span>
+            </div>
+          </div>
+
+          <!-- Badge Extra 4 (mostrato su espansione "Vedi tutti") -->
+          <div class="card badge-item-card badge-item-extra">
+            <div class="badge-item-left">
+              <div class="badge-item-icon-box bg-purple">
+                <span class="material-symbols-rounded icon-filled">palette</span>
+              </div>
+              <div class="badge-item-info">
+                <h4 class="badge-item-title">Maestro del CSS</h4>
+                <p class="badge-item-desc">Completati tutti i laboratori su Flexbox e Grid</p>
+              </div>
+            </div>
+            <div class="badge-status-pill">
+              <span class="material-symbols-rounded icon-check">check_circle</span>
+              <span>Sbloccato</span>
+            </div>
+          </div>
+
+          <!-- Badge Extra 5 -->
+          <div class="card badge-item-card badge-item-extra">
+            <div class="badge-item-left">
+              <div class="badge-item-icon-box bg-teal">
+                <span class="material-symbols-rounded icon-filled">terminal</span>
+              </div>
+              <div class="badge-item-info">
+                <h4 class="badge-item-title">Git Explorer</h4>
+                <p class="badge-item-desc">Primi commit e repository condivisi su GitHub</p>
+              </div>
+            </div>
+            <div class="badge-status-pill">
+              <span class="material-symbols-rounded icon-check">check_circle</span>
+              <span>Sbloccato</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PIANO DI STUDIO E MODIFICA OBIETTIVI -->
+      <section class="card study-plan-card" aria-label="Piano di studio corrente">
+        <div class="study-plan-header">
+          <div class="study-plan-icon-box">
+            <span class="material-symbols-rounded">tune</span>
+          </div>
+          <div>
+            <h4 class="study-plan-title">Piano di studio</h4>
+            <p class="study-plan-desc" id="study-plan-desc">Obiettivo corrente: 5h / settimana</p>
+          </div>
+        </div>
+
+        <button type="button" class="btn-study-plan" id="btn-edit-study-plan">
+          <span class="material-symbols-rounded icon-edit">edit_note</span>
+          <span>Modifica obiettivi di studio</span>
+        </button>
+      </section>
+
+    </main>
+
+    <!-- Notifica Toast dinamica per messaggi all'utente -->
+    <div class="profile-toast" id="profile-toast" role="status" aria-live="polite">
+      <span class="material-symbols-rounded" style="color: var(--color-secondary-fixed); font-size: 18px;">info</span>
+      <span id="toast-message">Notifica</span>
+    </div>
+
+  </div>
+
+  <!-- Script JavaScript dedicato della pagina Profilo -->
+  <script src="script-profilo.js"></script>
+</body>
+</html>

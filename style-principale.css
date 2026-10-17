@@ -1,0 +1,918 @@
+/* ==========================================================================
+   1. VARIABILI CSS E RESET GLOBALE
+   ========================================================================== */
+:root {
+  /* Palette Colori del Design System */
+  --color-bg-canvas: #f8fafc;
+  --color-surface: #ffffff;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-active: #3730a3;
+  --color-primary-light: #eef2ff;
+  --color-primary-border: #e0e7ff;
+
+  --color-teal: #14b8a6;
+  --color-teal-light: #ccfbf1;
+  --color-teal-dark: #0f766e;
+  --color-teal-border: #99f6e4;
+
+  --color-text-main: #111827;
+  --color-text-muted: #64748b;
+  --color-text-subtle: #94a3b8;
+
+  --color-border: #e2e8f0;
+  --color-border-subtle: rgba(226, 232, 240, 0.7);
+  --color-divider: #f1f5f9;
+  --color-code-bg: #0f172a;
+
+  /* Raggi di curvatura (Border Radius) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Ombreggiature (Elevation Shadows) */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-card: 0 4px 12px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --shadow-btn: 0 4px 14px rgba(79, 70, 229, 0.3);
+  --shadow-btn-hover: 0 6px 20px rgba(79, 70, 229, 0.4);
+
+  /* Tipografia */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Reset di base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #e2e8f0;
+  color: var(--color-text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Icone Material Symbols */
+.material-symbols-rounded {
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  line-height: 1;
+  display: inline-block;
+  user-select: none;
+}
+
+/* Icona con riempimento pieno */
+.material-symbols-rounded.icon-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ==========================================================================
+   2. CONTENITORE PRINCIPALE (MOBILE-FIRST)
+   ========================================================================== */
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  background-color: var(--color-bg-canvas);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12);
+  padding: 1.25rem 1.25rem 2rem 1.25rem;
+}
+
+/* ==========================================================================
+   3. HEADER
+   ========================================================================== */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  padding-bottom: 1.25rem;
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  display: inline-block;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}
+
+.user-avatar-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-border);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.user-avatar-btn:hover {
+  background-color: #e0e7ff;
+}
+
+.user-avatar-btn:active {
+  transform: scale(0.94);
+}
+
+/* ==========================================================================
+   4. MAIN E CARD PRINCIPALI
+   ========================================================================== */
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card di base condivisa */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+/* Sezione Saluto */
+.greeting-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-main);
+}
+
+.greeting-header p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+  margin-bottom: 0.85rem;
+}
+
+/* Card Progresso */
+.progress-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.progress-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.progress-card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.progress-percentage {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+/* Barra di avanzamento */
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background-color: var(--color-divider);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, #6366f1 0%, var(--color-primary) 100%);
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.35);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.25rem;
+}
+
+.progress-tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.progress-counter-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* Messaggio Obiettivo Raggiunto */
+.goal-achieved-message {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-teal-light);
+  border: 1px solid var(--color-teal-border);
+  color: var(--color-teal-dark);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  animation: fadeInBounce 0.4s ease forwards;
+}
+
+.goal-achieved-message.is-visible {
+  display: flex;
+}
+
+@keyframes fadeInBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   5. SEZIONE OBIETTIVI DI OGGI (CHECKLIST)
+   ========================================================================== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+  padding: 0 0.15rem;
+}
+
+.section-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  letter-spacing: -0.015em;
+}
+
+.badge-counter {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background-color: var(--color-divider);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+/* Lista Obiettivi */
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid var(--color-divider);
+  transition: background-color 0.15s ease;
+}
+
+.goal-item:last-child {
+  border-bottom: none;
+}
+
+.goal-item:hover {
+  background-color: rgba(248, 250, 252, 0.8);
+}
+
+/* Checkbox nativo invisibile ma accessibile */
+.goal-checkbox-native {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Scatolina visuale personalizzata della checkbox */
+.goal-checkbox-custom {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-sm);
+  border: 2px solid #cbd5e1;
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.goal-checkbox-custom .material-symbols-rounded {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.15s ease;
+}
+
+/* Stato Checked */
+.goal-checkbox-native:checked+.goal-checkbox-custom {
+  background-color: var(--color-teal);
+  border-color: var(--color-teal);
+  box-shadow: 0 2px 6px rgba(20, 184, 166, 0.3);
+}
+
+.goal-checkbox-native:checked+.goal-checkbox-custom .material-symbols-rounded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Contenuto dell'obiettivo */
+.goal-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.goal-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.goal-checkbox-native:checked~.goal-content .goal-title {
+  text-decoration: line-through;
+  color: var(--color-text-subtle);
+  font-weight: 500;
+}
+
+.goal-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+.goal-meta .material-symbols-rounded {
+  font-size: 14px;
+  color: var(--color-text-subtle);
+}
+
+/* Badge Completato a destra */
+.goal-badge-status {
+  display: none;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: var(--color-teal-light);
+  color: var(--color-teal-dark);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-teal-border);
+  flex-shrink: 0;
+}
+
+.goal-checkbox-native:checked~.goal-badge-status {
+  display: inline-block;
+}
+
+/* ==========================================================================
+   6. SEZIONE CONTINUA AD IMPARARE
+   ========================================================================== */
+.lesson-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Alone decorativo sfumato */
+.lesson-card-glow {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 110px;
+  height: 110px;
+  border-radius: var(--radius-full);
+  background-color: rgba(79, 70, 229, 0.08);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.lesson-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.lesson-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.lesson-icon-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  letter-spacing: -0.015em;
+}
+
+.lesson-card-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.lesson-duration-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: flex-start;
+  background-color: var(--color-bg-canvas);
+  border: 1px solid var(--color-border);
+  padding: 0.25rem 0.65rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.lesson-duration-chip .material-symbols-rounded {
+  font-size: 15px;
+  color: var(--color-text-subtle);
+}
+
+/* Pulsante Primario */
+.btn-primary {
+  width: 100%;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-btn);
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-btn-hover);
+}
+
+.btn-primary:active {
+  background-color: var(--color-primary-active);
+  transform: scale(0.98);
+}
+
+.btn-primary .material-symbols-rounded {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover .material-symbols-rounded {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   7. AZIONE SECONDARIA (VISUALIZZA IL MIO PERCORSO)
+   ========================================================================== */
+.btn-secondary {
+  width: 100%;
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-canvas);
+  border-color: #cbd5e1;
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary .material-symbols-rounded {
+  font-size: 20px;
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   8. SCHERMATE IN SOVRAPPOSIZIONE (OVERLAY & MODALI)
+   ========================================================================== */
+.screen-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-canvas);
+  z-index: 100;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  overflow-y: auto;
+}
+
+.screen-overlay.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Barra superiore delle schermate secondarie */
+.overlay-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-top: 0.25rem;
+}
+
+.btn-round-back {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-round-back:hover {
+  background-color: var(--color-bg-canvas);
+}
+
+.btn-round-back:active {
+  transform: scale(0.92);
+}
+
+.overlay-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+/* Layout Schermata Profilo */
+.profile-card {
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.profile-avatar-large {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-border);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.35rem;
+}
+
+.profile-avatar-large .material-symbols-rounded {
+  font-size: 38px;
+}
+
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.profile-role {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* Griglia Statistiche */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.stat-tile {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Sezione Competenze */
+.skills-section {
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.skills-section h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-chip {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Schermata Lezione / Video Player */
+.video-player-container {
+  background-color: var(--color-code-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  color: #ffffff;
+  margin: 1rem 0 1.25rem 0;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+}
+
+.video-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.window-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+}
+
+.dot-red {
+  background-color: #f43f5e;
+}
+
+.dot-yellow {
+  background-color: #f59e0b;
+}
+
+.dot-green {
+  background-color: #10b981;
+}
+
+.video-mock-screen {
+  height: 140px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.btn-play-pause {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.5);
+  transition: transform 0.15s ease;
+}
+
+.btn-play-pause:hover {
+  transform: scale(1.08);
+}
+
+.video-time-track {
+  width: 100%;
+  height: 4px;
+  background-color: #334155;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.video-time-fill {
+  width: 45%;
+  height: 100%;
+  background-color: var(--color-teal);
+}
+
+.video-controls-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.5rem;
+}
+
+/* Schermata Roadmap / Percorso */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.timeline-item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  gap: 0.85rem;
+}
+
+.timeline-bullet {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.bullet-completed {
+  background-color: var(--color-teal-light);
+  color: var(--color-teal-dark);
+}
+
+.bullet-active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.bullet-locked {
+  background-color: var(--color-divider);
+  color: var(--color-text-subtle);
+}
+
+.timeline-body h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.timeline-body p {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+.timeline-status {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  margin-top: 0.4rem;
+  display: inline-block;
+}

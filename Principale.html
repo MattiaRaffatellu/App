@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillPath - Il tuo percorso di crescita</title>
+
+  <!-- Google Fonts: Inter per i testi e Material Symbols Rounded per le icone -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Foglio di stile CSS esterno -->
+  <link rel="stylesheet" href="style-principale.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       STRUTTURA PRINCIPALE DELL'APPLICAZIONE
+       ========================================================================== -->
+  <div class="app-container" id="app-container">
+
+    <!-- 1. HEADER: Intestazione con logo e icona profilo utente -->
+    <header class="app-header" id="app-header">
+      <div class="brand-group">
+        <h1 class="brand-title">
+          <span>SkillPath</span>
+          <span class="brand-dot"></span>
+        </h1>
+        <p class="brand-subtitle">Il tuo percorso di crescita</p>
+      </div>
+
+      <!-- ======================================================================
+           COLLEGAMENTO ALLA PAGINA PROFILO (Nuova schermata nel folder 'profilo')
+           Invece di aprire una vecchia modale interna in sovrapposizione,
+           ora reindirizza direttamente alla pagina dedicata nel folder 'profilo/index.html'
+           ====================================================================== -->
+      <a href="profilo/Profilo.html" class="user-avatar-btn" id="btn-open-profile" aria-label="Apri profilo utente">
+        <span class="material-symbols-rounded">person</span>
+      </a>
+    </header>
+
+    <!-- MAIN: Contenuto principale -->
+    <main class="app-main" id="app-main">
+
+      <!-- 2. SEZIONE SALUTO E PROGRESSO -->
+      <section class="welcome-section" aria-labelledby="greeting-title">
+        <div class="greeting-header">
+          <h2 id="greeting-title">Ciao, Mattia!</h2>
+          <p>Un piccolo passo ogni giorno.</p>
+        </div>
+
+        <!-- Card Progresso (Funzionalità 2 e 3) -->
+        <div class="card progress-card">
+          <div class="progress-card-top">
+            <span class="progress-card-title">Il tuo progresso</span>
+            <span class="progress-percentage" id="progress-percent">68%</span>
+          </div>
+
+          <!-- Traccia e riempimento barra di avanzamento -->
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68">
+            <div class="progress-fill" id="progress-fill" style="width: 68%;"></div>
+          </div>
+
+          <!-- Messaggio traguardo raggiunto (Funzionalità 3) -->
+          <div class="goal-achieved-message" id="goal-achieved-banner">
+            <span class="material-symbols-rounded icon-filled">emoji_events</span>
+            <span>Obiettivo raggiunto! Grande lavoro per oggi!</span>
+          </div>
+
+          <div class="progress-card-footer">
+            <span class="progress-tag">Settimana 3</span>
+            <span class="progress-counter-text" id="progress-summary">14/20 Obiettivi raggiunti</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. SEZIONE OBIETTIVI DI OGGI (Funzionalità 5) -->
+      <section class="daily-goals-section" aria-labelledby="daily-goals-title">
+        <div class="section-header">
+          <h3 id="daily-goals-title">I tuoi obiettivi di oggi</h3>
+          <span class="badge-counter" id="completed-counter">1 di 3 completati</span>
+        </div>
+
+        <!-- Lista Obiettivi spuntabili con checkbox -->
+        <div class="card goals-list">
+
+          <!-- Obiettivo 1 (inizialmente completato nel wireframe) -->
+          <label class="goal-item" for="task-1">
+            <input type="checkbox" id="task-1" class="goal-checkbox-native task-checkbox" checked>
+            <div class="goal-checkbox-custom">
+              <span class="material-symbols-rounded">check</span>
+            </div>
+            <div class="goal-content">
+              <span class="goal-title">Ripassa le variabili JavaScript</span>
+              <div class="goal-meta">
+                <span class="material-symbols-rounded">schedule</span>
+                <span>10 min</span>
+              </div>
+            </div>
+            <span class="goal-badge-status">Completato</span>
+          </label>
+
+          <!-- Obiettivo 2 -->
+          <label class="goal-item" for="task-2">
+            <input type="checkbox" id="task-2" class="goal-checkbox-native task-checkbox">
+            <div class="goal-checkbox-custom">
+              <span class="material-symbols-rounded">check</span>
+            </div>
+            <div class="goal-content">
+              <span class="goal-title">Studia le funzioni</span>
+              <div class="goal-meta">
+                <span class="material-symbols-rounded">schedule</span>
+                <span>20 min</span>
+              </div>
+            </div>
+            <span class="goal-badge-status">Completato</span>
+          </label>
+
+          <!-- Obiettivo 3 -->
+          <label class="goal-item" for="task-3">
+            <input type="checkbox" id="task-3" class="goal-checkbox-native task-checkbox">
+            <div class="goal-checkbox-custom">
+              <span class="material-symbols-rounded">check</span>
+            </div>
+            <div class="goal-content">
+              <span class="goal-title">Completa un esercizio pratico</span>
+              <div class="goal-meta">
+                <span class="material-symbols-rounded">schedule</span>
+                <span>15 min</span>
+              </div>
+            </div>
+            <span class="goal-badge-status">Completato</span>
+          </label>
+
+        </div>
+      </section>
+
+      <!-- 4. SEZIONE CONTINUA AD IMPARARE (Funzionalità 4) -->
+      <section class="continue-learning-section" aria-labelledby="lesson-header-title">
+        <div class="card lesson-card" id="lesson-card">
+          <div class="lesson-card-glow"></div>
+
+          <div class="lesson-card-header">
+            <span class="lesson-eyebrow">Continua a imparare</span>
+            <div class="lesson-icon-circle">
+              <span class="material-symbols-rounded icon-filled" style="font-size: 18px;">play_arrow</span>
+            </div>
+          </div>
+
+          <!-- Titolo e descrizione dinamici dell'ultima lezione attiva -->
+          <h4 class="lesson-card-title" id="current-lesson-title">Funzioni in JavaScript</h4>
+          <p class="lesson-card-desc" id="current-lesson-desc">Scopri come riutilizzare il codice</p>
+
+          <div class="lesson-duration-chip">
+            <span class="material-symbols-rounded">timer</span>
+            <span id="current-lesson-duration">12 min</span>
+          </div>
+
+          <!-- Tasto Riprendi Lezione: naviga al video corrente (Funzionalità 4) -->
+          <button type="button" class="btn-primary" id="btn-resume-lesson">
+            <span>Riprendi lezione</span>
+            <span class="material-symbols-rounded" id="resume-icon">arrow_forward</span>
+          </button>
+        </div>
+      </section>
+      
+
+      <!-- 5. AZIONE SECONDARIA: STORICO PERCORSO (Funzionalità 6) -->
+      <section class="roadmap-action-section">
+        <button type="button" class="btn-secondary" id="btn-view-roadmap">
+          <span class="material-symbols-rounded">alt_route</span>
+          <span>Visualizza il mio percorso</span>
+        </button>
+      </section>
+
+    </main>
+
+    <!-- ==========================================================================
+       SCHERMATA PROFILO: SPOSTATA SU PAGINA DEDICATA (profilo/index.html)
+       Il vecchio overlay interno #profile-screen è stato rimosso per adottare
+       un'architettura multi-pagina pulita e modulare con file HTML, CSS e JS separati.
+       ========================================================================== -->
+
+    <!-- ==========================================================================
+       SCHERMATA 2: VIDEO LEZIONE CORRENTE (OVERLAY SLIDE-IN)
+       ========================================================================== -->
+    <div class="screen-overlay" id="lesson-screen" aria-hidden="true">
+      <div class="overlay-topbar">
+        <button type="button" class="btn-round-back" id="btn-close-lesson" aria-label="Torna alla home">
+          <span class="material-symbols-rounded">arrow_back</span>
+        </button>
+        <span class="overlay-badge">Lezione in corso</span>
+        <div style="width: 38px;"></div>
+      </div>
+
+      <div class="lesson-duration-chip" style="margin-bottom: 0.5rem;">
+        <span class="material-symbols-rounded">timer</span>
+        <span id="player-lesson-duration">12 min • Video interattivo</span>
+      </div>
+
+      <h2 class="brand-title" style="font-size: 1.35rem;" id="player-lesson-title">Funzioni in JavaScript</h2>
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.35rem; margin-bottom: 0.5rem;" id="player-lesson-desc">
+        Scopri come riutilizzare il codice creando funzioni con argomenti e return statement.
+      </p>
+
+      <!-- Mockup del player video -->
+      <div class="video-player-container">
+        <div class="video-window-bar">
+          <span class="window-dot dot-red"></span>
+          <span class="window-dot dot-yellow"></span>
+          <span class="window-dot dot-green"></span>
+          <span style="margin-left: 0.5rem;">player_stream.mp4</span>
+        </div>
+
+        <div class="video-mock-screen">
+          <button type="button" class="btn-play-pause" id="btn-toggle-play" aria-label="Riproduci o metti in pausa">
+            <span class="material-symbols-rounded icon-filled" id="play-icon" style="font-size: 26px;">play_arrow</span>
+          </button>
+        </div>
+
+        <div class="video-time-track">
+          <div class="video-time-fill" id="video-progress"></div>
+        </div>
+
+        <div class="video-controls-row">
+          <span id="video-time-text">05:24 / 12:00</span>
+          <span>1080p HD</span>
+        </div>
+      </div>
+
+      <!-- Pulsanti interazione lezione -->
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: auto;">
+        <button type="button" class="btn-primary" id="btn-complete-lesson">
+          <span class="material-symbols-rounded">check_circle</span>
+          <span>Completa e passa alla prossima</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+       SCHERMATA 3: STORICO E ROADMAP DEL PERCORSO (OVERLAY SLIDE-IN)
+       ========================================================================== -->
+    <div class="screen-overlay" id="roadmap-screen" aria-hidden="true">
+      <div class="overlay-topbar">
+        <button type="button" class="btn-round-back" id="btn-close-roadmap" aria-label="Torna indietro">
+          <span class="material-symbols-rounded">arrow_back</span>
+        </button>
+        <span class="overlay-badge">Il mio percorso</span>
+        <div style="width: 38px;"></div>
+      </div>
+
+      <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text-main);">Storico di apprendimento</h3>
+      <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-top: 0.2rem;">Tutte le tappe superate e i moduli futuri.</p>
+
+      <!-- Timeline dei moduli completati e in corso -->
+      <div class="timeline-container">
+        
+        <!-- Modulo 1: Completato -->
+        <div class="timeline-item">
+          <div class="timeline-bullet bullet-completed">
+            <span class="material-symbols-rounded" style="font-size: 16px;">done_all</span>
+          </div>
+          <div class="timeline-body">
+            <h4>Settimana 1: HTML5 & Semantica Web</h4>
+            <p>5 lezioni teoriche e 3 progetti completati.</p>
+            <span class="timeline-status" style="color: var(--color-teal-dark);">100% Completato</span>
+          </div>
+        </div>
+
+        <!-- Modulo 2: Completato -->
+        <div class="timeline-item">
+          <div class="timeline-bullet bullet-completed">
+            <span class="material-symbols-rounded" style="font-size: 16px;">done_all</span>
+          </div>
+          <div class="timeline-body">
+            <h4>Settimana 2: CSS Moderno, Flexbox & Grid</h4>
+            <p>6 lezioni di layout responsive e wireframing.</p>
+            <span class="timeline-status" style="color: var(--color-teal-dark);">100% Completato</span>
+          </div>
+        </div>
+
+        <!-- Modulo 3: In Corso -->
+        <div class="timeline-item">
+          <div class="timeline-bullet bullet-active">
+            <span class="material-symbols-rounded" style="font-size: 16px;">hourglass_top</span>
+          </div>
+          <div class="timeline-body">
+            <h4>Settimana 3: Logica JavaScript & Funzioni</h4>
+            <p>Variabili, strutture condizionali, array e cicli.</p>
+            <span class="timeline-status" style="color: var(--color-primary);">In corso (68%)</span>
+          </div>
+        </div>
+
+        <!-- Modulo 4: Bloccato -->
+        <div class="timeline-item">
+          <div class="timeline-bullet bullet-locked">
+            <span class="material-symbols-rounded" style="font-size: 16px;">lock</span>
+          </div>
+          <div class="timeline-body">
+            <h4>Settimana 4: Manipolazione del DOM & Eventi</h4>
+            <p>Progetto finale e web app interattiva.</p>
+            <span class="timeline-status" style="color: var(--color-text-subtle);">Bloccato</span>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="button" class="btn-secondary" id="btn-close-roadmap-alt" style="margin-top: 1.5rem;">
+        <span>Chiudi lo storico</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Script JavaScript esterno (collegato subito prima di </body>) -->
+  <script src="script-principale.js"></script>
+</body>
+</html>
