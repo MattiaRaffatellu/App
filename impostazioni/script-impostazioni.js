@@ -69,12 +69,7 @@ if (notificationToggle) {
 
 
 /* === 4. GESTIONE DELLE AZIONI ACCOUNT E IMPOSTAZIONI === */
-// Preferenze tema e lingua
-if (itemPreferences) {
-  itemPreferences.addEventListener('click', function() {
-    showToast('Lingua attuale: Italiano • Tema: Sistema');
-  });
-}
+// Nota: itemPreferences e item-edit-profile navigano direttamente alle rispettive pagine dedicate.
 
 // Funzioni AI
 if (itemAiSettings) {

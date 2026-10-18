@@ -48,7 +48,7 @@
 
       <!-- SCHEDA RAPIDA UTENTE (USER QUICK CARD) -->
       <section aria-label="Scheda sintetica utente">
-        <a href="../profilo/Profilo.html" class="card user-quick-card" title="Visualizza profilo completo">
+        <a href="Modifica-profilo/Modifica-profilo.html" class="card user-quick-card" title="Modifica dati del profilo">
           <div class="user-quick-left">
             <div class="user-quick-avatar-box">
               <img class="user-quick-avatar" 
@@ -82,7 +82,7 @@
         <div class="card settings-group">
 
           <!-- Preferenze -->
-          <button type="button" class="settings-row" id="item-preferences">
+          <a href="Preferenze/Preferenze.html" class="settings-row" id="item-preferences">
             <div class="settings-row-left">
               <div class="settings-icon-box">
                 <span class="material-symbols-rounded">tune</span>
@@ -95,19 +95,37 @@
             <div class="settings-row-right">
               <span class="material-symbols-rounded">chevron_right</span>
             </div>
-          </button>
+          </a>
 
           <div class="settings-divider"></div>
 
-          <!-- Collegamento diretto alla pagina Profilo -->
+          <!-- Modifica Profilo -->
+          <a href="Modifica-profilo/Modifica-profilo.html" class="settings-row" id="item-edit-profile">
+            <div class="settings-row-left">
+              <div class="settings-icon-box">
+                <span class="material-symbols-rounded">manage_accounts</span>
+              </div>
+              <div class="settings-row-text">
+                <div class="settings-row-title">Modifica profilo</div>
+                <div class="settings-row-subtitle">Dati personali, avatar, obiettivi</div>
+              </div>
+            </div>
+            <div class="settings-row-right">
+              <span class="material-symbols-rounded">chevron_right</span>
+            </div>
+          </a>
+
+          <div class="settings-divider"></div>
+
+          <!-- Collegamento diretto alla pagina Profilo & Statistiche -->
           <a href="../profilo/Profilo.html" class="settings-row" id="item-profile">
             <div class="settings-row-left">
               <div class="settings-icon-box">
                 <span class="material-symbols-rounded">person</span>
               </div>
               <div class="settings-row-text">
-                <div class="settings-row-title">Profilo</div>
-                <div class="settings-row-subtitle">Dati personali, avatar</div>
+                <div class="settings-row-title">Statistiche Profilo</div>
+                <div class="settings-row-subtitle">Ore di studio, streak, traguardi</div>
               </div>
             </div>
             <div class="settings-row-right">

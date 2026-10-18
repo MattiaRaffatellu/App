@@ -1,0 +1,708 @@
+/* ==========================================================================
+   SKILLPATH - STILI DELLA PAGINA MODIFICA PROFILO (style-modifica-profilo.css)
+   Architettura Vanilla CSS pura, mobile-first, conforme al design system SkillPath.
+   ========================================================================== */
+
+/* === 1. VARIABILI CSS (DESIGN TOKENS SKILLPATH) === */
+:root {
+  /* Palette Colori Principali */
+  --color-primary: #3525cd;
+  --color-primary-container: #4f46e5;
+  --color-primary-fixed: #e2dfff;
+  --color-primary-fixed-dim: #c3c0ff;
+  --color-on-primary-fixed: #0f0069;
+  --color-on-primary-fixed-variant: #3323cc;
+  --color-on-primary: #ffffff;
+
+  /* Colori Secondari (Teal / Menta) */
+  --color-secondary: #006b5f;
+  --color-secondary-container: #6df5e1;
+  --color-secondary-fixed: #71f8e4;
+  --color-on-secondary-fixed: #00201c;
+  --color-on-secondary-fixed-variant: #005048;
+
+  /* Colori di Stato ed Errore */
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+
+  /* Superfici e Sfondi */
+  --color-bg-canvas: #e2e8f0;
+  --color-surface: #f8f9ff;
+  --color-surface-card: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eff4ff;
+  --color-surface-container: #e5eeff;
+  --color-surface-container-high: #dce9ff;
+  --color-surface-container-highest: #d3e4fe;
+  
+  /* Testi e Bordi */
+  --color-text-main: #0b1c30;
+  --color-text-muted: #464555;
+  --color-outline: #777587;
+  --color-outline-variant: #c7c4d8;
+
+  /* Colori Inversi per Toast Flottanti */
+  --color-inverse-surface: #213145;
+  --color-inverse-on-surface: #eaf1ff;
+
+  /* Dimensioni e Raggi di curvatura */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Ombreggiature soft */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 2px 12px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --shadow-primary: 0 4px 16px rgba(53, 37, 205, 0.24);
+  --shadow-float: 0 10px 30px rgba(15, 23, 42, 0.15);
+
+  /* Tipografia */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* === 2. RESET E IMPOSTAZIONI GLOBALI === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-canvas);
+  color: var(--color-text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+/* Material Symbols Icons */
+.material-symbols-rounded,
+.material-symbols-outlined {
+  font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', sans-serif;
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  line-height: 1;
+  display: inline-block;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.icon-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Utilità display nascosto */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* === 3. CONTENITORE PRINCIPALE (MOBILE-FIRST) === */
+.app-container {
+  width: 100%;
+  max-width: 440px;
+  min-height: 100vh;
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12);
+  padding: 0.5rem 1rem 2rem 1rem;
+}
+
+/* === 4. HEADER DI NAVIGAZIONE === */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(248, 249, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: -0.5rem -1rem 0 -1rem;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(199, 196, 216, 0.2);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.btn-nav-back {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-main);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-nav-back:hover {
+  background-color: var(--color-surface-container-low);
+}
+
+.btn-nav-back:active {
+  transform: scale(0.92);
+}
+
+.header-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-header-save {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+
+.btn-header-save:hover {
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-primary-fixed-variant);
+}
+
+.btn-header-save:active {
+  transform: scale(0.95);
+}
+
+.header-user-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.header-user-badge:hover {
+  transform: scale(1.08);
+}
+
+/* === 5. CONTENUTO PRINCIPALE === */
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 1rem;
+}
+
+/* === 6. SEZIONE AVATAR E FOTO PROFILO === */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Anello sfumato attorno all'avatar */
+.avatar-ring {
+  width: 112px;
+  height: 112px;
+  border-radius: var(--radius-full);
+  padding: 4px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary-fixed) 100%);
+  box-shadow: 0 4px 14px rgba(53, 37, 205, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background-color: var(--color-surface-container-lowest);
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+/* Badge fotocamera interattivo per caricamento */
+.camera-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  transition: all 0.15s ease;
+}
+
+.camera-badge:hover {
+  background-color: var(--color-primary-container);
+  transform: scale(1.08);
+}
+
+.camera-badge:active {
+  transform: scale(0.92);
+}
+
+/* Tasti rapidi Cambia Foto e Rimuovi */
+.avatar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.btn-upload-photo {
+  cursor: pointer;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--color-surface-container-low);
+  color: var(--color-primary);
+  border: 1px solid rgba(199, 196, 216, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+}
+
+.btn-upload-photo:hover {
+  background-color: var(--color-surface-container);
+}
+
+.btn-upload-photo:active {
+  transform: scale(0.95);
+}
+
+.btn-remove-photo {
+  background: none;
+  border: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-remove-photo:hover {
+  color: var(--color-error);
+  background-color: rgba(255, 218, 214, 0.4);
+}
+
+.btn-remove-photo:active {
+  transform: scale(0.95);
+}
+
+.avatar-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* === 7. CARD INFORMAZIONI E SEZIONI === */
+.form-card {
+  background-color: var(--color-surface-card);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(199, 196, 216, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-tag-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.sync-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary);
+}
+
+/* Campi Form e Input */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(113, 248, 228, 0.25);
+  color: var(--color-on-secondary-fixed-variant);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.85rem;
+  color: var(--color-text-muted);
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.text-input {
+  width: 100%;
+  background-color: var(--color-surface-container-low);
+  color: var(--color-text-main);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  padding: 0.75rem 0.85rem 0.75rem 2.6rem;
+  transition: all 0.2s ease;
+}
+
+.text-input::placeholder {
+  color: rgba(70, 69, 85, 0.5);
+}
+
+.text-input:focus {
+  outline: none;
+  background-color: var(--color-surface-container-lowest);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(53, 37, 205, 0.15);
+}
+
+/* === 8. SELETTORE LIVELLO ATTUALE === */
+.level-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  padding: 0.25rem;
+  background-color: var(--color-surface-container-low);
+  border-radius: var(--radius-md);
+}
+
+.btn-level {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding: 0.6rem 0.25rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-level:hover {
+  color: var(--color-text-main);
+}
+
+.btn-level.is-active {
+  background-color: var(--color-surface-card);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* === 9. OBIETTIVO GIORNALIERO (PILLOLE) === */
+.goal-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.goal-badge-val {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.goal-pills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.goal-pill {
+  background-color: var(--color-surface-container-low);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-family: inherit;
+}
+
+.goal-pill:hover {
+  background-color: var(--color-surface-container);
+}
+
+.goal-pill:active {
+  transform: scale(0.96);
+}
+
+.goal-pill-time {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.goal-pill-sub {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}
+
+.goal-pill.is-active {
+  background-color: var(--color-primary-fixed);
+  border-color: rgba(53, 37, 205, 0.25);
+  box-shadow: var(--shadow-sm);
+}
+
+.goal-pill.is-active .goal-pill-time {
+  color: var(--color-on-primary-fixed);
+}
+
+.goal-pill.is-active .goal-pill-sub {
+  color: var(--color-on-primary-fixed-variant);
+  font-weight: 600;
+}
+
+/* === 10. CHIP ARGOMENTI PRIORITARI === */
+.skills-tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.2rem;
+}
+
+.skill-chip {
+  border: none;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-container-low);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.skill-chip:hover {
+  background-color: var(--color-surface-container);
+  color: var(--color-text-main);
+}
+
+.skill-chip.is-active {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(53, 37, 205, 0.25);
+}
+
+.skill-chip:active {
+  transform: scale(0.95);
+}
+
+/* === 11. AZIONI IN FONDO (SALVA E ANNULLA) === */
+.bottom-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.btn-primary-action {
+  width: 100%;
+  min-height: 48px;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.18s ease;
+  text-decoration: none;
+}
+
+.btn-primary-action:hover {
+  background-color: var(--color-primary-container);
+  box-shadow: 0 6px 20px rgba(53, 37, 205, 0.35);
+}
+
+.btn-primary-action:active {
+  transform: scale(0.98);
+}
+
+.btn-cancel-action {
+  width: 100%;
+  min-height: 42px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-cancel-action:hover {
+  background-color: var(--color-surface-container-low);
+  color: var(--color-text-main);
+}
+
+.btn-cancel-action:active {
+  transform: scale(0.98);
+}
+
+/* === 12. NOTIFICA TOAST FLUTTUANTE === */
+.profile-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  visibility: hidden;
+  background-color: var(--color-inverse-surface);
+  color: var(--color-inverse-on-surface);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-float);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 100;
+  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.profile-toast.is-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}

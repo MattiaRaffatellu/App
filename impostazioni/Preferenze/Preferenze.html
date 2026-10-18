@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>SkillPath - Preferenze</title>
+
+  <!-- Google Fonts: Inter e Material Symbols Rounded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Foglio di stile CSS dedicato per la pagina Preferenze -->
+  <link rel="stylesheet" href="style-preferenze.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       CONTENITORE PRINCIPALE (MOBILE-FIRST)
+       ========================================================================== -->
+  <div class="app-container">
+
+    <!-- ========================================================================
+         1. HEADER: Navigazione Indietro verso Impostazioni e Icona Profilo
+         ======================================================================== -->
+    <header class="app-header">
+      <div class="header-left">
+        <!-- Tasto Indietro: ritorna alla pagina Impostazioni -->
+        <a href="../Impostazioni.html" class="btn-nav-back" aria-label="Torna alle Impostazioni">
+          <span class="material-symbols-rounded">arrow_back</span>
+        </a>
+        <h1 class="header-title">Preferenze</h1>
+      </div>
+
+      <div class="header-right">
+        <!-- Mini Badge Profilo: porta alla vista profilo completa -->
+        <a href="../../profilo/Profilo.html" class="header-user-badge" title="Visualizza statistiche profilo">
+          <span class="material-symbols-rounded" style="font-size: 18px;">person</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ========================================================================
+         2. CONTENUTO PRINCIPALE
+         ======================================================================== -->
+    <main class="app-main">
+
+      <!-- BANNER INTRODUZIONE CONFIGURAZIONE -->
+      <section class="intro-banner" aria-label="Introduzione configurazione">
+        <div class="intro-icon-box">
+          <span class="material-symbols-rounded" style="font-size: 20px;">tune</span>
+        </div>
+        <div>
+          <div class="intro-label">Configurazione</div>
+          <p class="intro-text">
+            Personalizza l'esperienza di navigazione, il tema visivo e la lingua principale dell'app SkillPath.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEZIONE 1: TEMA DELL'APPLICAZIONE -->
+      <section class="pref-card" aria-label="Tema dell'applicazione">
+        <div class="pref-card-header">
+          <div class="pref-header-icon icon-palette-box">
+            <span class="material-symbols-rounded" style="font-size: 20px;">palette</span>
+          </div>
+          <div>
+            <h2 class="pref-card-title">Tema dell'applicazione</h2>
+            <p class="pref-card-subtitle">Scegli come visualizzare l'interfaccia di SkillPath</p>
+          </div>
+        </div>
+
+        <!-- Segmented Control del Tema -->
+        <div class="theme-segmented-control" role="radiogroup" aria-label="Selezione tema grafico">
+          <button type="button" class="theme-tab-btn" data-theme="light" role="radio" aria-checked="false">
+            <span class="material-symbols-rounded" style="font-size: 18px;">light_mode</span>
+            <span>Chiaro</span>
+          </button>
+
+          <button type="button" class="theme-tab-btn" data-theme="dark" role="radio" aria-checked="false">
+            <span class="material-symbols-rounded" style="font-size: 18px;">dark_mode</span>
+            <span>Scuro</span>
+          </button>
+
+          <button type="button" class="theme-tab-btn is-active" data-theme="system" role="radio" aria-checked="true">
+            <span class="material-symbols-rounded" style="font-size: 18px;">desktop_windows</span>
+            <span>Sistema</span>
+          </button>
+        </div>
+
+        <!-- Messaggio informativo dinamico sul tema -->
+        <div class="theme-info-box">
+          <span class="material-symbols-rounded" style="font-size: 16px; color: var(--color-primary); flex-shrink: 0;">info</span>
+          <p class="theme-info-text" id="theme-status-text">
+            Attualmente segue le impostazioni di sistema del dispositivo in uso.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEZIONE 2: LINGUA DELL'APP -->
+      <section class="pref-card" aria-label="Lingua dell'applicazione">
+        <div class="pref-card-header">
+          <div class="pref-header-icon icon-lang-box">
+            <span class="material-symbols-rounded" style="font-size: 20px;">language</span>
+          </div>
+          <div>
+            <h2 class="pref-card-title">Lingua dell'app</h2>
+            <p class="pref-card-subtitle">I contenuti delle lezioni e i test si adatteranno alla lingua scelta</p>
+          </div>
+        </div>
+
+        <!-- Opzioni Lingua -->
+        <div class="language-options-list" role="radiogroup" aria-label="Selezione lingua">
+          <!-- Italiano (Selezionato per impostazione predefinita) -->
+          <div class="lang-item-row is-selected" data-lang="it" role="radio" aria-checked="true">
+            <div class="lang-left">
+              <span class="lang-code-circle">IT</span>
+              <div class="lang-info">
+                <div class="lang-name-row">
+                  <span class="lang-name">Italiano</span>
+                  <span class="badge-default-lang">Predefinita</span>
+                </div>
+                <p class="lang-subtitle">Interfaccia e percorsi in lingua italiana</p>
+              </div>
+            </div>
+            <div class="radio-circle-indicator">
+              <div class="radio-inner-dot"></div>
+            </div>
+            <input type="radio" name="pref_language" value="it" class="sr-only" checked>
+          </div>
+
+          <!-- English -->
+          <div class="lang-item-row" data-lang="en" role="radio" aria-checked="false">
+            <div class="lang-left">
+              <span class="lang-code-circle">EN</span>
+              <div class="lang-info">
+                <div class="lang-name-row">
+                  <span class="lang-name">English</span>
+                </div>
+                <p class="lang-subtitle">English (United States / Global)</p>
+              </div>
+            </div>
+            <div class="radio-circle-indicator">
+              <div class="radio-inner-dot"></div>
+            </div>
+            <input type="radio" name="pref_language" value="en" class="sr-only">
+          </div>
+
+          <!-- Español -->
+          <div class="lang-item-row" data-lang="es" role="radio" aria-checked="false">
+            <div class="lang-left">
+              <span class="lang-code-circle">ES</span>
+              <div class="lang-info">
+                <div class="lang-name-row">
+                  <span class="lang-name">Español</span>
+                </div>
+                <p class="lang-subtitle">Spagnolo europeo e latinoamericano</p>
+              </div>
+            </div>
+            <div class="radio-circle-indicator">
+              <div class="radio-inner-dot"></div>
+            </div>
+            <input type="radio" name="pref_language" value="es" class="sr-only">
+          </div>
+
+          <!-- Français -->
+          <div class="lang-item-row" data-lang="fr" role="radio" aria-checked="false">
+            <div class="lang-left">
+              <span class="lang-code-circle">FR</span>
+              <div class="lang-info">
+                <div class="lang-name-row">
+                  <span class="lang-name">Français</span>
+                </div>
+                <p class="lang-subtitle">Francese standard</p>
+              </div>
+            </div>
+            <div class="radio-circle-indicator">
+              <div class="radio-inner-dot"></div>
+            </div>
+            <input type="radio" name="pref_language" value="fr" class="sr-only">
+          </div>
+
+          <!-- Deutsch -->
+          <div class="lang-item-row" data-lang="de" role="radio" aria-checked="false">
+            <div class="lang-left">
+              <span class="lang-code-circle">DE</span>
+              <div class="lang-info">
+                <div class="lang-name-row">
+                  <span class="lang-name">Deutsch</span>
+                </div>
+                <p class="lang-subtitle">Tedesco standard</p>
+              </div>
+            </div>
+            <div class="radio-circle-indicator">
+              <div class="radio-inner-dot"></div>
+            </div>
+            <input type="radio" name="pref_language" value="de" class="sr-only">
+          </div>
+        </div>
+      </section>
+
+      <!-- SEZIONE 3: ACCESSIBILITÀ E DISPLAY -->
+      <section class="pref-card" aria-label="Accessibilità e Display">
+        <div class="pref-card-header">
+          <div class="pref-header-icon icon-access-box">
+            <span class="material-symbols-rounded" style="font-size: 20px;">visibility</span>
+          </div>
+          <div>
+            <h2 class="pref-card-title">Accessibilità e Display</h2>
+            <p class="pref-card-subtitle">Opzioni avanzate per una fruizione confortevole</p>
+          </div>
+        </div>
+
+        <div class="switches-list">
+          <!-- Switch 1: Riduci animazioni -->
+          <div class="switch-item-row">
+            <div class="switch-text-box">
+              <span class="switch-title">Riduci animazioni</span>
+              <p class="switch-desc">Disabilita transizioni complesse per risparmiare batteria e fluidità</p>
+            </div>
+            <button type="button" class="toggle-btn" id="toggle-reduced-motion" role="switch" aria-checked="false" aria-label="Riduci animazioni">
+              <span class="toggle-knob"></span>
+            </button>
+          </div>
+
+          <!-- Switch 2: Caratteri ad alta leggibilità -->
+          <div class="switch-item-row">
+            <div class="switch-text-box">
+              <span class="switch-title">Caratteri ad alta leggibilità</span>
+              <p class="switch-desc">Ottimizza il contrasto tipografico e lo spessore del testo</p>
+            </div>
+            <button type="button" class="toggle-btn" id="toggle-high-contrast" role="switch" aria-checked="true" aria-label="Caratteri ad alta leggibilità">
+              <span class="toggle-knob"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- AZIONI IN BASSO -->
+      <div class="bottom-actions">
+        <button type="button" class="btn-primary-action" id="btn-save-preferences">
+          <span class="material-symbols-rounded" style="font-size: 20px;">save</span>
+          <span>Salva preferenze</span>
+        </button>
+
+        <button type="button" class="btn-reset-action" id="btn-reset-defaults">
+          <span class="material-symbols-rounded" style="font-size: 16px;">restart_alt</span>
+          <span>Ripristina predefiniti</span>
+        </button>
+      </div>
+
+    </main>
+
+    <!-- Notifica Toast per conferme salvataggio -->
+    <div class="pref-toast" id="pref-toast" role="status" aria-live="polite">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span class="material-symbols-rounded" style="color: var(--color-secondary-fixed); font-size: 18px;">check_circle</span>
+        <span id="toast-message">Preferenze salvate con successo</span>
+      </div>
+      <button type="button" class="toast-close-btn" id="btn-close-toast" aria-label="Chiudi notifica">
+        <span class="material-symbols-rounded" style="font-size: 16px;">close</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Script JavaScript dedicato per la pagina Preferenze -->
+  <script src="script-preferenze.js"></script>
+</body>
+</html>
